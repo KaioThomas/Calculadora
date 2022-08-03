@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.674);
+}
+
+main{
+    background-color: rgba(0, 0, 0, 0.708);
+    border-radius: 2px;
+    padding: 5px;
+    box-shadow: 0  5px 20px #0a0808;
+}
+
+p{
+    padding: 5px 0 0 5px;
+    color: white;
+    font-size: 15px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+form input{
+    height: 4rem;
+    width: 20rem;
+    border: none; 
+    color: white;
+    font-size: 2rem;
+    background-color: transparent;
+    text-align: end;
+    font-weight: 100;
+}
+
+.buttons{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+}
+
+button{
+    padding: 15px;
+    border-radius: 2px;
+    border: none;
+    color: white;
+    background-color: #0a0908;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+    font-weight: 100;
+}
+
+button:hover{
+    background-color: rgba(124, 123, 123, 0.656);
+}
+
+.zero{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 5;
+}
+
+.btn-light{
+    background-color: #2f2929;
+}
+
+.btn-result{
+    background-color: #5a5050
+}
+
+
