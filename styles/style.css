@@ -18,6 +18,7 @@ body{
 }
 
 main{
+    width: 25em;
     background-color: rgba(0, 0, 0, 0.708);
     border-radius: 2px;
     padding: 5px;
@@ -37,14 +38,22 @@ form{
 
 form input{
     height: 4rem;
-    width: 20rem;
+    width: 100%;
     border: none; 
     color: white;
-    font-size: 2rem;
+    font-size: 50px;
     background-color: transparent;
     text-align: end;
     font-weight: 100;
+    padding: 0 10px 0 10px;
 }
+
+#cima{
+    font-size: 20px;
+    opacity: 0.8;
+    padding-right: 15px;
+}
+
 
 .buttons{
     display: grid;
@@ -53,7 +62,7 @@ form input{
 }
 
 button{
-    padding: 15px;
+    padding: 30px;
     border-radius: 2px;
     border: none;
     color: white;
