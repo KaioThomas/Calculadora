@@ -8,8 +8,9 @@ campoDeBaixo.value = 0;
 
 function mostrarResultado() {
     let result = eval(`${campoDeCima.value} ${campoDeBaixo.value}`)
+
     campoDeCima.value = ''
-    campoDeBaixo.value = result
+    campoDeBaixo.value = result        
 }
 
 function mostrarCalculo(sinal) {
@@ -68,27 +69,28 @@ function apagar(modoDeApagar){
     }
 }
 
-function limitarNumeros(quantidadeNum){
-    if(quantidadeNum > 15) return;
-            let tamanho = window.getComputedStyle(campoDeBaixo).fontSize;
-            tamanho = parseInt(tamanho);
-            tamanho -= 3;
-            console.log(tamanho)
-            campoDeBaixo.style.fontSize = tamanho + "px";
-}
 
 btns.forEach((btn) => {
     btn.addEventListener('click', (e) =>{
         let digito = e.target.innerText;
+        let qntdNum = campoDeBaixo.value.length
+
+         if (operations.includes(digito)){
+            if(campoDeCima.value !== "" && campoDeBaixo.value === ""){
+                changeOperation(digito)
+            }
+            calcular(digito)
+         }
+         else if (digito === "CE" || digito === "del" || digito === "C") {
+            apagar(digito)
+         }
+
+        if(qntdNum >= 13)return;
 
         if(numbers.includes(digito)) {
             if(campoDeBaixo.value === "0")
              campoDeBaixo.value = digito;
             else campoDeBaixo.value += digito;
-        }
-
-        if(campoDeBaixo.value.length >= 13){
-            limitarNumeros(campoDeBaixo.value.length);
         }
       
         if(campoDeBaixo.value === "0"){
@@ -101,15 +103,7 @@ btns.forEach((btn) => {
             }
          } 
 
-        if (operations.includes(digito)){
-            if(campoDeCima.value !== "" && campoDeBaixo.value === ""){
-                changeOperation(digito)
-            }
-            calcular(digito)
-         }
-         else if (digito === "CE" || digito === "del" || digito === "C") {
-            apagar(digito)
-         }
+       
     });
 });
 

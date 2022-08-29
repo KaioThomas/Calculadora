@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
 }
 
-body{
+body {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,51 +17,53 @@ body{
     background-color: rgba(0, 0, 0, 0.674);
 }
 
-main{
+.calculadora {
     width: 25em;
     background-color: rgba(0, 0, 0, 0.708);
     border-radius: 2px;
-    padding: 5px;
+    padding: 8px;
     box-shadow: 0  5px 20px #0a0808;
 }
 
-p{
+p {
     padding: 5px 0 0 5px;
     color: white;
-    font-size: 15px;
+    font-size: 1em;
 }
 
-form{
+form {
     display: flex;
     flex-direction: column;
 }
 
-form input{
+form input {
     height: 4rem;
     width: 100%;
     border: none; 
     color: white;
-    font-size: 50px;
     background-color: transparent;
     text-align: end;
     font-weight: 100;
     padding: 0 10px 0 10px;
 }
 
-#cima{
+#cima {
     font-size: 20px;
     opacity: 0.8;
     padding-right: 15px;
 }
 
+#baixo {
+    font-size: 3em;
+}
 
-.buttons{
+.buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2px;
 }
 
-button{
+button {
     padding: 30px;
     border-radius: 2px;
     border: none;
@@ -73,21 +75,21 @@ button{
     font-weight: 100;
 }
 
-button:hover{
+button:hover {
     background-color: rgba(124, 123, 123, 0.656);
 }
 
-.zero{
+.zero {
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 5;
 }
 
-.btn-light{
+.btn-light {
     background-color: #2f2929;
 }
 
-.btn-result{
+.btn-result {
     background-color: #5a5050
 }
 
