@@ -25,13 +25,16 @@ function del(){
     if(campoDeBaixo.value != 0){
         if(campoDeBaixo.value.length == '1'){
             campoDeBaixo.value = 0;
-        } else campoDeBaixo.value = campoDeBaixo.value.slice(0, -1)        
+        } else campoDeBaixo.value = campoDeBaixo.value.slice(0, -1);        
     } 
 }
 
 function calcular(sinal) {
 
     if(campoDeBaixo.value.includes(sinal))
+    return;
+
+    if(campoDeBaixo.value === "0" || campoDeBaixo.value === "")
     return;
 
     switch(sinal){
@@ -99,7 +102,7 @@ btns.forEach((btn) => {
          } 
 
         if (operations.includes(digito)){
-            if(campoDeBaixo.value === '' && campoDeCima.value !== ''){
+            if(campoDeCima.value !== "" && campoDeBaixo.value === ""){
                 changeOperation(digito)
             }
             calcular(digito)
