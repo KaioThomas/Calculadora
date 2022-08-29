@@ -1,18 +1,49 @@
 const btns = document.querySelectorAll('button');
 const campoDeBaixo = document.getElementById('baixo');
 const campoDeCima = document.getElementById('cima');
-const conta = "+" || "-" || "/" || "X" || "=";
+const operations = ["+", "-", "/", "X", "="];
 
 campoDeBaixo.value = 0;
 
-function calcular(sinal){
+function mostrarResultado() {
+    let result = eval(`${campoDeCima.value} ${campoDeBaixo.value}`)
+    campoDeCima.value = ''
+    campoDeBaixo.value = result
+}
+
+function mostrarCalculo(sinal) {
+    campoDeCima.value = `${campoDeBaixo.value} ${sinal}`;
+    campoDeBaixo.value = ''
+}
+
+function changeOperation(sinal {
+
+})
+
+function calcular(sinal) {
+
+    if(campoDeBaixo.value === '' && campoDeCima.value !== ''){
+        changeOperation(sinal)
+    }
+
     if(campoDeBaixo.value.includes(sinal))
     return;
 
     switch(sinal){
         case "+": 
-        campoDeBaixo.value = campoDeBaixo.value
-        campoDeCima.value = `${campoDeBaixo.value} ${sinal}`;
+            mostrarCalculo(sinal)
+          break
+        case "*":
+            mostrarCalculo(sinal)
+            break
+        case "-":
+            mostrarCalculo(sinal)
+            break
+        case "/":
+            mostrarCalculo(sinal)
+        case "=":
+          mostrarResultado()
+          break
     }
 }
 
@@ -54,12 +85,11 @@ btns.forEach((btn) => {
                 return;
             } else campoDeBaixo.value += digito;
          } 
-         else if (digito === "+" || digito === "-" || digito === "X" 
-        || digito === "/" || digito === "="){
+
+        if (operations.includes(digito)){
             calcular(digito)
-            console.log('op');
          }
-         else {
+         else if (digito === "CE" || digito === "del" || digito === "C") {
             apagar(digito)
          }
     });
