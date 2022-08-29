@@ -1,7 +1,8 @@
 const btns = document.querySelectorAll('button');
 const campoDeBaixo = document.getElementById('baixo');
 const campoDeCima = document.getElementById('cima');
-const operations = ["+", "-", "/", "X", "="];
+const operations = ["+", "-", "/", "*", "="];
+const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 campoDeBaixo.value = 0;
 
@@ -16,15 +17,19 @@ function mostrarCalculo(sinal) {
     campoDeBaixo.value = ''
 }
 
-function changeOperation(sinal {
+function changeOperation(sinal) {
+   campoDeCima.value = campoDeCima.value.slice(0, -1) + sinal;
+}
 
-})
+function del(){
+    if(campoDeBaixo.value != 0){
+        if(campoDeBaixo.value.length == '1'){
+            campoDeBaixo.value = 0;
+        } else campoDeBaixo.value = campoDeBaixo.value.slice(0, -1)        
+    } 
+}
 
 function calcular(sinal) {
-
-    if(campoDeBaixo.value === '' && campoDeCima.value !== ''){
-        changeOperation(sinal)
-    }
 
     if(campoDeBaixo.value.includes(sinal))
     return;
@@ -50,10 +55,13 @@ function calcular(sinal) {
 function apagar(modoDeApagar){
     switch(modoDeApagar){
         case "CE": campoDeBaixo.value = 0;
+         break
         case "C": campoDeBaixo.value = 0; 
                 campoDeCima.value = '';
+         break
         case "del": 
-
+            del()
+        break
     }
 }
 
@@ -70,23 +78,30 @@ btns.forEach((btn) => {
     btn.addEventListener('click', (e) =>{
         let digito = e.target.innerText;
 
+        if(numbers.includes(digito)) {
+            if(campoDeBaixo.value === "0")
+             campoDeBaixo.value = digito;
+            else campoDeBaixo.value += digito;
+        }
+
         if(campoDeBaixo.value.length >= 13){
             limitarNumeros(campoDeBaixo.value.length);
         }
       
         if(campoDeBaixo.value === "0"){
-            if(digito === ".")
+            if(digito === "."){
                 campoDeBaixo.value = 0 + digito;
-            else 
-                campoDeBaixo.value = digito;
-            
+            } 
          } else if(digito >=0 || digito === "."){
             if(digito === "." && campoDeBaixo.value.includes(digito)){
                 return;
-            } else campoDeBaixo.value += digito;
+            }
          } 
 
         if (operations.includes(digito)){
+            if(campoDeBaixo.value === '' && campoDeCima.value !== ''){
+                changeOperation(digito)
+            }
             calcular(digito)
          }
          else if (digito === "CE" || digito === "del" || digito === "C") {
